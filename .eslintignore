@@ -1,0 +1,10 @@
+/build/**
+/test/**
+
+/src/scenes/index.js
+plugins/phaser-ui/components/index.js
+plugins/phaser-ui/index.js
+/plugins/others/**
+
+# uncomment following line to disable eslint
+# **/*

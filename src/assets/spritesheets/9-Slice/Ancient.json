@@ -1,0 +1,110 @@
+{
+    "frames": {
+        "brown_inlay.png": {
+            "frame": {
+                "x": 96,
+                "y": 96,
+                "w": 44,
+                "h": 44
+            }
+        },
+        "brown_pressed.png": {
+            "frame": {
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "brown.png": {
+            "frame": {
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "grey_inlay.png": {
+            "frame": {
+                "x": 144,
+                "y": 44,
+                "w": 44,
+                "h": 44
+            }
+        },
+        "grey_pressed.png": {
+            "frame": {
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "grey.png": {
+            "frame": {
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "tan_inlay.png": {
+            "frame": {
+                "x": 144,
+                "y": 88,
+                "w": 44,
+                "h": 44
+            }
+        },
+        "tan_pressed.png": {
+            "frame": {
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "tan.png": {
+            "frame": {
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "white_inlay.png": {
+            "frame": {
+                "x": 144,
+                "y": 0,
+                "w": 44,
+                "h": 44
+            }
+        },
+        "white_pressed.png": {
+            "frame": {
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "white.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        }
+    },
+    "meta": {
+        "app": "spritesheet-templates",
+        "version": "10.2.3",
+        "image": "~9-Slice/Ancient.png",
+        "scale": 1,
+        "size": {
+            "w": 188,
+            "h": 144
+        }
+    }
+}

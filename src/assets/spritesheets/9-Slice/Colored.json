@@ -1,0 +1,94 @@
+{
+    "frames": {
+        "blue_pressed.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "blue.png": {
+            "frame": {
+                "x": 48,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "green_pressed.png": {
+            "frame": {
+                "x": 0,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "green.png": {
+            "frame": {
+                "x": 48,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "grey_pressed.png": {
+            "frame": {
+                "x": 96,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "grey.png": {
+            "frame": {
+                "x": 96,
+                "y": 48,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "red_pressed.png": {
+            "frame": {
+                "x": 0,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "red.png": {
+            "frame": {
+                "x": 48,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "yellow_pressed.png": {
+            "frame": {
+                "x": 96,
+                "y": 96,
+                "w": 48,
+                "h": 48
+            }
+        },
+        "yellow.png": {
+            "frame": {
+                "x": 144,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            }
+        }
+    },
+    "meta": {
+        "app": "spritesheet-templates",
+        "version": "10.2.3",
+        "image": "~9-Slice/Colored.png",
+        "scale": 1,
+        "size": {
+            "w": 192,
+            "h": 144
+        }
+    }
+}
