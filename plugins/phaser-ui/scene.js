@@ -1,3 +1,7 @@
+/* eslint-disable class-methods-use-this */
+
+import * as components from './components';
+
 export default class UI extends Phaser.Plugins.ScenePlugin {
   /**
    *  My custom scene plugin.
@@ -19,12 +23,21 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
     manager.registerGameObject('ui', this.uiFactory, this.uiCreator);
   }
 
-  uiFactory(scene, ...args) {
-    console.log(scene, args, this); // eslint-disable-line
+  uiFactory(scene, type, ...args) {
+    let obj = null;
+    if (components[type]) {
+      obj = components[type](scene, args[0]);
+      scene.add.existing(obj);
+    }
+    return obj;
   }
 
-  uiCreator(scene, ...args) {
-    console.log(scene, args, this); // eslint-disable-line
+  uiCreator(scene, type, ...args) {
+    let obj = null;
+    if (components[type]) {
+      obj = components[type](scene, args[0]);
+    }
+    return obj;
   }
 
   /**

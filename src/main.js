@@ -4,25 +4,15 @@ import * as config from './config';
 function extendConfig(Phaser) {
   const scenes = require('./scenes');
   const ui = require('Plugins/phaser-ui');
-  console.log(ui);
-  // const { RandomNamePlugin } = require('Plugins/phaser-ui/RandomNamePlugin');
+  console.log(ui); // eslint-disable-line
   config.scene = Object.values(scenes);
   config.type = Phaser.AUTO;
-  // for plugins require file inside this funtion
   config.plugins = {
     global: [
-      // {
-      //   key: 'RandomNamePlugin',
-      //   plugin: RandomNamePlugin,
-      //   mapping: 'ranName',
-      //   data: 'boo!',
-      //   start: true
-      // },
       {
         key: 'UI',
         plugin: ui.global,
         mapping: 'ui',
-        data: 'boo!',
         start: true
       }
     ],

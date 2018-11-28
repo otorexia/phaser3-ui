@@ -34,8 +34,8 @@ function updateComponentIndex() {
 if (args[2] === 'update') {
   if (args[3]) {
     if (args[3] === 'u') {
-      updateUIPluginIndex();
-      console.log(`${colors.bold(colors.blue(`Component list updated.`))}`); // eslint-disable-line no-console
+      // updateUIPluginIndex();
+      console.log(`${colors.bold(colors.red(`This command is disabled.`))}`); // eslint-disable-line no-console
     }
     if (args[3] === 'c') {
       updateComponentIndex();

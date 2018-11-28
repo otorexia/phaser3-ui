@@ -1,5 +1,5 @@
 module.exports = {
-  spritesmeeth: true, // control spritesmeeth respinsible for creating spritesheet.
+  spritesmeeth: false, // control spritesmeeth respinsible for creating spritesheet.
   // add to array and create new folder in './assets' by the same name to create new spritesheet
   spritesheetFolders: ['9-Slice/Outline', '9-Slice/Colored', '9-Slice/Ancient'],
   autoImportFolders: ['9-Slice'],

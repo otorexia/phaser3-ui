@@ -1,3 +1,5 @@
+import * as components from './components';
+
 export default class Test extends Phaser.Plugins.BasePlugin {
   /**
    *  My custom global plugin.
@@ -7,9 +9,6 @@ export default class Test extends Phaser.Plugins.BasePlugin {
    */
   constructor(manager) {
     super('UI', manager);
-  }
-
-  init() {
-    console.log('ui-plugin is alive', this); // eslint-disable-line
+    this.make = components;
   }
 }
