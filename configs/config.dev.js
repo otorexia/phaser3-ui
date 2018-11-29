@@ -49,6 +49,6 @@ module.exports = {
     name: 'D:\\absolute_path\\to\\custom\\phaser\\build.js',
     anothername: 'D:\\anotehr_absolute\\path\\to\\custom\\phaser\\build.js'
   },
-  zip: true,
+  zip: false,
   zipExtName: 'zip'
 };

@@ -17,7 +17,8 @@ module.exports = {
         allowForLoopAfterthoughts: true
       }
     ],
-    'global-require': 0
+    'global-require': 0,
+    'no-useless-constructor': 0
   },
   globals: {
     Phaser: false,

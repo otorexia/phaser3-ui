@@ -6,5 +6,6 @@ plugins/phaser-ui/components/index.js
 plugins/phaser-ui/index.js
 /plugins/others/**
 
+*.html
 # uncomment following line to disable eslint
 # **/*

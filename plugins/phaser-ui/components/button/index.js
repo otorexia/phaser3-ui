@@ -1,21 +1,14 @@
-import { NinePatch } from '@koreez/phaser3-ninepatch';
+import NineSprite from 'Plugins/phaser-ui/utils/NineSprite';
+import PlainSprite from 'Plugins/phaser-ui/utils/PlainSprite';
+import Button from './button';
 
-class Button extends NinePatch {
-  constructor(scene, ninepatch) {
-    super(
-      scene,
-      ninepatch.x,
-      ninepatch.y,
-      ninepatch.w,
-      ninepatch.h,
-      ninepatch.sprite,
-      ninepatch.frame,
-      ninepatch.config
-    );
+export default function(scene, x, y, spriteConfig, ...args) {
+  let base;
+  if (spriteConfig.ninesprite) {
+    base = new NineSprite(scene, spriteConfig);
+  } else {
+    base = new PlainSprite(scene, spriteConfig);
   }
-}
-
-export default function(scene, ninepatch) {
-  let button = new Button(scene, ninepatch);
+  const button = new Button(scene, x, y, [base], args);
   return button;
 }

@@ -23,19 +23,19 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
     manager.registerGameObject('ui', this.uiFactory, this.uiCreator);
   }
 
-  uiFactory(scene, type, ...args) {
+  uiFactory(scene, type, x, y, ...args) {
     let obj = null;
     if (components[type]) {
-      obj = components[type](scene, args[0]);
+      obj = components[type](scene, x, y, args[0], args[1]);
       scene.add.existing(obj);
     }
     return obj;
   }
 
-  uiCreator(scene, type, ...args) {
+  uiCreator(scene, type, x, y, ...args) {
     let obj = null;
     if (components[type]) {
-      obj = components[type](scene, args[0]);
+      obj = components[type](scene, x, y, args[0], args[1]);
     }
     return obj;
   }

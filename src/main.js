@@ -11,12 +11,12 @@ function extendConfig(Phaser) {
     global: [
       {
         key: 'UI',
-        plugin: ui.global,
+        plugin: ui.uiGlobal,
         mapping: 'ui',
         start: true
       }
     ],
-    scene: [{ key: 'UI', plugin: ui.scene, mapping: 'ui', start: true }]
+    scene: [{ key: 'UI', plugin: ui.uiScene, mapping: 'ui', start: true }]
   };
 }
 

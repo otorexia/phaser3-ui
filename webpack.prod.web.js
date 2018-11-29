@@ -14,10 +14,11 @@ const copyright = 'example name';
 const setup = {
   mode: 'production',
   output: {
+    path: resolve(__dirname, './docs/demo'),
     chunkFilename: 'phaser.js'
   },
   plugins: [
-    new CleanWebpackPlugin(['build/web']),
+    new CleanWebpackPlugin(['./docs/demo']),
     new webpack.BannerPlugin({
       banner: `${title} - ${version} © ${copyright}`
     })
