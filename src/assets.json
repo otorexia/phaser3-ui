@@ -7,8 +7,10 @@
   "audio": {
     "music": {}
   },
-  "atlas": {},
   "spreadsheet": {},
+  "atlas": {
+    "colored": ["spritesheets/9-Slice/Colored.png", "spritesheets/9-Slice/Colored.json"]
+  },
   "xml": {},
 
   "": {

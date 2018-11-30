@@ -9,6 +9,6 @@ export default function(scene, x, y, spriteConfig, ...args) {
   } else {
     base = new PlainSprite(scene, spriteConfig);
   }
-  const button = new Button(scene, x, y, [base], args);
+  const button = new Button(scene, x, y, [base], ...args);
   return button;
 }

@@ -18,7 +18,8 @@ module.exports = {
       }
     ],
     'global-require': 0,
-    'no-useless-constructor': 0
+    'no-useless-constructor': 0,
+    'no-param-reassign': 0
   },
   globals: {
     Phaser: false,

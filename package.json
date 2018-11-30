@@ -5,7 +5,7 @@
   "version": "1.2.0",
   "description": "A basic webpack based Phaser 3 template",
   "scripts": {
-    "build:web": "node webpack.prod.web.js",
+    "build:demo": "node webpack.prod.web.js",
     "build:plugin": "node webpack.prod.plugin.js",
     "start": "node webpack.dev.js",
     "test": "mocha",

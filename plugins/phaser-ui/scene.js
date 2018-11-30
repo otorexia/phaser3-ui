@@ -26,7 +26,7 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
   uiFactory(scene, type, x, y, ...args) {
     let obj = null;
     if (components[type]) {
-      obj = components[type](scene, x, y, args[0], args[1]);
+      obj = components[type](scene, x, y, args.splice(0, 1)[0], args);
       scene.add.existing(obj);
     }
     return obj;
@@ -35,7 +35,7 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
   uiCreator(scene, type, x, y, ...args) {
     let obj = null;
     if (components[type]) {
-      obj = components[type](scene, x, y, args[0], args[1]);
+      obj = components[type](scene, x, y, args.splice(0, 1)[0], args);
     }
     return obj;
   }
