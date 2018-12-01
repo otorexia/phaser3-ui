@@ -1,5 +1,5 @@
 import NinePatch from 'Plugins/phaser-ui/utils/NinePatch';
-import NineSlice from 'Plugins/phaser-ui/utils/NineSlice';
+// import NineSlice from 'Plugins/phaser-ui/utils/NineSlice';
 import PlainSprite from 'Plugins/phaser-ui/utils/PlainSprite';
 import Button from './button';
 
@@ -19,7 +19,7 @@ export default function(scene, x, y, spriteConfigs, label, inputArea, effects, d
         sprite = new NinePatch(scene, spriteConfig);
       }
       if (spriteConfig.type.includes('slice')) {
-        sprite = new NineSlice(scene, spriteConfig);
+        // sprite = new NineSlice(scene, spriteConfig);
       }
       if (spriteConfig.hide) sprite.setAlpha(0);
       base.push(sprite);

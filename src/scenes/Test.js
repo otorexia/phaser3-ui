@@ -1,5 +1,4 @@
 import { Button } from 'Plugins/phaser-ui'; // eslint-disable-line
-import { NineSlice } from 'phaser3-nineslice'; // eslint-disable-line
 
 export default class Test extends Phaser.Scene {
   constructor() {
