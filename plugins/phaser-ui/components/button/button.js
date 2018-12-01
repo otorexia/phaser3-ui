@@ -1,29 +1,40 @@
 import createHitArea from 'Plugins/phaser-ui/utils/HitArea';
 import createHitAreaIndicator from 'Plugins/phaser-ui/utils/hitAreaIndicator';
 
-let playTween = true;
+let playTweenHover = true;
+let playTweenUp = true;
+let playTweenDown = true;
+let playTweenOut = true;
+
+function hideObj(hide, list) {
+  hide.forEach(el => {
+    list[el].alpha = 0;
+  });
+}
+function showObj(show, list) {
+  show.forEach(el => {
+    list[el].alpha = 1;
+  });
+}
 
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, childs, configs) {
+  constructor(scene, x, y, childs, inputArea, effects, debug) {
     super(scene, x, y, childs);
     this.bounds = this.getBounds();
-    const hitArea = createHitArea(this, configs[0]);
-    // console.log(configs);
-    this.setInteractive(hitArea, Phaser.Geom[configs[0].type].Contains);
-    //  Just to display the hit area, not actually needed to work
-    configs[2] = !configs[2];
-    if (configs[2]) {
+    const hitArea = createHitArea(this, inputArea);
+    this.setInteractive(hitArea, Phaser.Geom[inputArea.type].Contains);
+    if (debug) {
       const graphics = createHitAreaIndicator(this, hitArea);
       this.list.push(graphics);
     }
 
-    if (configs[1].tint && configs[1].normal) {
-      if (configs[1].normal.color) {
+    if (effects.tint && effects.normal) {
+      if (effects.normal.color) {
         childs.forEach(child => {
-          if (configs[1].tint) child.setTint(configs[1].normal.color);
+          if (effects.tint) child.setTint(effects.normal.color);
         });
       } else {
-        configs[1].normal.color = 0xffffff;
+        effects.normal.color = 0xffffff;
       }
     }
 
@@ -31,15 +42,30 @@ export default class Button extends Phaser.GameObjects.Container {
 
     this.on('pointerover', () => {
       if (!this.isDisabled) {
-        if (configs[1].hover) {
-          if (configs[1].tint) {
+        if (effects.hover) {
+          if (effects.tint) {
             childs.forEach(child => {
-              if (configs[1].hover.color) child.setTint(configs[1].hover.color);
+              if (effects.hover.color) child.setTint(effects.hover.color);
             });
           }
-          if (configs[1].tween && configs[1].hover.tween) {
-            configs[1].hover.tween.targets = childs;
-            scene.tweens.add(configs[1].hover.tween);
+
+          if (effects.hover.tween && playTweenHover && (effects.frame || effects.tween)) {
+            effects.hover.tween.targets = childs;
+            effects.hover.tween.onStart = () => {
+              playTweenHover = false;
+              if (effects.frame && effects.hover.frame) {
+                if (effects.hover.frame.hide) {
+                  hideObj(effects.hover.frame.hide, this.list);
+                }
+                if (effects.hover.frame.show) {
+                  showObj(effects.hover.frame.show, this.list);
+                }
+              }
+            };
+            effects.hover.tween.onComplete = () => {
+              playTweenHover = true;
+            };
+            scene.tweens.add(effects.hover.tween);
           }
         }
         this.emit('on-hover');
@@ -48,41 +74,94 @@ export default class Button extends Phaser.GameObjects.Container {
 
     this.on('pointerdown', () => {
       if (!this.isDisabled) {
-        if (configs[1].down) {
-          if (configs[1].tint) {
+        if (effects.down) {
+          if (effects.tint) {
             childs.forEach(child => {
-              if (configs[1].down.color) child.setTint(configs[1].down.color);
+              if (effects.down.color) child.setTint(effects.down.color);
             });
           }
 
-          if (configs[1].tween && configs[1].down.tween && playTween) {
-            configs[1].down.tween.targets = childs;
-            configs[1].down.tween.onStart = () => {
-              playTween = false;
-              if (configs[1].down.frame) {
-                // this.list[0].setFrame(configs[1].down.frame);
+          if (effects.down.tween && playTweenDown && (effects.frame || effects.tween)) {
+            effects.down.tween.targets = childs;
+            effects.down.tween.onStart = () => {
+              playTweenDown = false;
+              if (effects.frame && effects.down.frame) {
+                if (effects.down.frame.hide) {
+                  hideObj(effects.down.frame.hide, this.list);
+                }
+                if (effects.down.frame.show) {
+                  showObj(effects.down.frame.show, this.list);
+                }
               }
             };
-            configs[1].down.tween.onComplete = () => {
-              // this.list[0].setFrame('green.png');
-              playTween = true;
+            effects.down.tween.onComplete = () => {
+              playTweenDown = true;
             };
-            scene.tweens.add(configs[1].down.tween);
+            scene.tweens.add(effects.down.tween);
           }
         }
         this.emit('on-down');
       }
     });
 
+    this.on('pointerup', () => {
+      if (!this.isDisabled) {
+        if (effects.up) {
+          if (effects.tint) {
+            childs.forEach(child => {
+              if (effects.up.color) child.setTint(effects.up.color);
+            });
+          }
+
+          if (effects.up.tween && playTweenUp && (effects.frame || effects.tween)) {
+            effects.up.tween.targets = childs;
+            effects.up.tween.onStart = () => {
+              playTweenUp = false;
+              if (effects.frame && effects.up.frame) {
+                if (effects.up.frame.hide) {
+                  hideObj(effects.up.frame.hide, this.list);
+                }
+                if (effects.up.frame.show) {
+                  showObj(effects.up.frame.show, this.list);
+                }
+              }
+            };
+            effects.up.tween.onComplete = () => {
+              playTweenUp = true;
+            };
+            scene.tweens.add(effects.up.tween);
+          }
+        }
+        this.emit('on-up');
+      }
+    });
+
     this.on('pointerout', () => {
       if (!this.isDisabled) {
-        childs.forEach(child => {
-          child.clearTint();
-        });
-        if (configs[1].exit) {
-          if (configs[1].tween && configs[1].exit.tween) {
-            configs[1].exit.tween.targets = childs;
-            scene.tweens.add(configs[1].exit.tween);
+        if (effects.tint) {
+          childs.forEach(child => {
+            child.clearTint();
+          });
+        }
+
+        if (effects.out) {
+          if (effects.out.tween && playTweenOut && (effects.frame || effects.tween)) {
+            effects.out.tween.targets = childs;
+            effects.out.tween.onStart = () => {
+              playTweenOut = false;
+              if (effects.frame && effects.out.frame) {
+                if (effects.out.frame.hide) {
+                  hideObj(effects.out.frame.hide, this.list);
+                }
+                if (effects.out.frame.show) {
+                  showObj(effects.out.frame.show, this.list);
+                }
+              }
+            };
+            effects.out.tween.onComplete = () => {
+              playTweenOut = true;
+            };
+            scene.tweens.add(effects.out.tween);
           }
         }
         this.emit('on-exit');

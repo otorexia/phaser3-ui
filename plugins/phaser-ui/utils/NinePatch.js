@@ -1,6 +1,6 @@
 import { NinePatch } from '@koreez/phaser3-ninepatch';
 
-export default class NineSprite extends NinePatch {
+export default class NinePatchSprite extends NinePatch {
   constructor(scene, ninepatch) {
     super(
       scene,

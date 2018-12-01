@@ -32,10 +32,10 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
     return obj;
   }
 
-  uiCreator(scene, type, x, y, ...args) {
+  uiCreator(scene, type, x, y, spriteConfigs, label, inputArea, effects, debug) {
     let obj = null;
     if (components[type]) {
-      obj = components[type](scene, x, y, args.splice(0, 1)[0], args);
+      obj = components[type](scene, x, y, spriteConfigs, label, inputArea, effects, debug);
     }
     return obj;
   }
