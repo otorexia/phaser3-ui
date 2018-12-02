@@ -1,4 +1,4 @@
-import { Button } from 'Plugins/phaser-ui'; // eslint-disable-line
+import { Button, Label } from 'Plugins/phaser-ui'; // eslint-disable-line
 
 export default class Test extends Phaser.Scene {
   constructor() {
@@ -8,7 +8,20 @@ export default class Test extends Phaser.Scene {
   }
 
   create() {
-    const tt = this.add.sprite(400, 100, 'colored', 'red.png').setAlpha(0);
+    // this.add.bitmapText();
+    const hello = new Label(
+      this, // 'label',
+      'text',
+      false,
+      300,
+      90,
+      'press show',
+      { fontFamily: 'Arial', fontSize: 24, color: '#00ff00' },
+      15,
+      0
+    );
+    console.log(hello); // eslint-disable-line
+    this.add.existing(hello);
 
     const ninepatchConfig = {
       type: 'ninepatch',
@@ -47,16 +60,29 @@ export default class Test extends Phaser.Scene {
     ninePatch2.frame = 'green_pressed.png';
     ninePatch2.hide = true;
 
+    const tt = this.add.sprite(600, 100, 'colored', 'red.png').setAlpha(0);
+
     // 3(+1) different way to do it
-    const b = this.make.ui(
+    // let b = this.ui.make.Button(this, {
+    // const b = new Button(
+    const b = this.add.ui(
+      // const b = this.make.ui(
       this,
       'Button',
       100,
-      100, // let b = this.ui.make.Button(this, {
-      // let b = new Button(this, {
+      100,
       [ninepatchConfig, ninePatch2],
       // [ninesliceConfig, nineSlice2],
-      {},
+      {
+        type: 'bitmaptext',
+        dynamic: false,
+        x: 0,
+        y: 0,
+        text: 'Show',
+        font: 'ken-pixel',
+        size: 22,
+        align: 0
+      },
       { type: 'Rectangle', size: 1 },
       {
         tint: true,
@@ -90,23 +116,29 @@ export default class Test extends Phaser.Scene {
       },
       false
     );
-    this.add.existing(b);
+    // this.add.existing(b);
     // b.x = 100;
     // b.y = 200;
     console.log(b); // eslint-disable-line
     b.on('on-hover', () => {
       tt.alpha = 1;
+      b.label.setText('hide');
       // console.log('Hello World!');
     });
     b.on('on-down', () => {
       tt.alpha = 0;
+      b.label.setText('show');
+      hello.setText('OK!!');
       // console.log('Hello World!');
     });
     b.on('on-up', () => {
       tt.alpha = 1;
+      b.label.setText('hide');
+      hello.setText('click again');
       // console.log('Hello World!');
     });
     b.on('on-exit', () => {
+      b.label.setText('show');
       tt.alpha = 0;
       // console.log('!!');
     });

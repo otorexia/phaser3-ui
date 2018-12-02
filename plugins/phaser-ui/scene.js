@@ -1,6 +1,5 @@
-/* eslint-disable class-methods-use-this */
-
 import * as components from './components';
+import { uiFactory, uiCreator } from './utils/helper';
 
 export default class UI extends Phaser.Plugins.ScenePlugin {
   /**
@@ -19,25 +18,8 @@ export default class UI extends Phaser.Plugins.ScenePlugin {
      *  @type {Phaser.Events}
      */
     this.events = this.systems.events;
-    this.hello = 'hello';
-    manager.registerGameObject('ui', this.uiFactory, this.uiCreator);
-  }
-
-  uiFactory(scene, type, x, y, ...args) {
-    let obj = null;
-    if (components[type]) {
-      obj = components[type](scene, x, y, args.splice(0, 1)[0], args);
-      scene.add.existing(obj);
-    }
-    return obj;
-  }
-
-  uiCreator(scene, type, x, y, spriteConfigs, label, inputArea, effects, debug) {
-    let obj = null;
-    if (components[type]) {
-      obj = components[type](scene, x, y, spriteConfigs, label, inputArea, effects, debug);
-    }
-    return obj;
+    this.create = components;
+    manager.registerGameObject('ui', uiFactory, uiCreator);
   }
 
   /**

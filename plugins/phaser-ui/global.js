@@ -1,4 +1,5 @@
 import * as components from './components';
+import { uiFactory, uiCreator } from './utils/helper';
 
 export default class Test extends Phaser.Plugins.BasePlugin {
   /**
@@ -8,7 +9,8 @@ export default class Test extends Phaser.Plugins.BasePlugin {
    *  @param {Phaser.Plugins.PluginManager} manager - Phaser plugin manager.
    */
   constructor(manager) {
-    super('UI', manager);
-    this.make = components;
+    super(manager);
+    this.create = components;
+    manager.registerGameObject('ui', uiFactory, uiCreator);
   }
 }

@@ -7,7 +7,6 @@ const dir = './plugins/phaser-ui/components/';
 
 function createTemplate(name) {
   return `import ${name} from './${name.toLowerCase()}';\n
-
 /**
  * @param {Phaser.Scene} scene the parent scene for this Component
  * @param {x} x cordinate for this Component
